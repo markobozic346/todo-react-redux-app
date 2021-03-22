@@ -6,3 +6,16 @@ i will use speechly.
 ## Status: in development
 
 ### to do:
+
+[] - list component
+[] - title 
+[] - items title/desc
+[] - editing title/items
+[] - add item
+[] - add list
+[] - deleting list/items
+[] - styling everything
+[] - make items and list draggable
+[] - adding redux
+[] - saving data in local storage
+[] - adding data with voice
