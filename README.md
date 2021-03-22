@@ -7,15 +7,15 @@ i will use speechly.
 
 ### to do:
 
-[] - list component
-[] - title 
-[] - items title/desc
-[] - editing title/items
-[] - add item
-[] - add list
-[] - deleting list/items
-[] - styling everything
-[] - make items and list draggable
-[] - adding redux
-[] - saving data in local storage
-[] - adding data with voice
+[] - list component </br>
+[] - title </br>
+[] - items title/desc </br>
+[] - editing title/items </br>
+[] - add item </br>
+[] - add list </br> 
+[] - deleting list/items </br>
+[] - styling everything </br>
+[] - make items and list draggable </br>
+[] - adding redux </br>
+[] - saving data in local storage </br>
+[] - adding data with voice </br>
