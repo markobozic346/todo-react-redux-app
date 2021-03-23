@@ -16,7 +16,6 @@ const List = () => {
     const classes = useStyle();
     return (
         <Paper elevation={3} className={classes.list}>
-           ffds
            <Title/>
         </Paper>
             
