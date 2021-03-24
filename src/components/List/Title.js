@@ -5,11 +5,19 @@ import { makeStyles } from "@material-ui/styles";
 const useStyle = makeStyles({
   titleText: {
     fontSize: "1rem",
-    fontWeight: "500",
-    padding: "10px",
-    width: '100%'
+    fontWeight: "600",
+    width: '96%',
+    padding: '8px'
+    
   },
- 
+ input:{
+  fontWeight: "600",
+   fontSize: '1rem',
+   width: '96%',
+   backgroundColor: 'white',
+   margin: '8px',
+
+ }
 });
 
 const Title = () => {
@@ -29,8 +37,7 @@ const Title = () => {
         </Typography>
       ) : (
         <InputBase
-          className={classes.titleText}
-          style={{backgroundColor: '#d3d3d3'}}
+          className={classes.input}
           value={title}
           autoFocus={true}
           onBlur={() =>
