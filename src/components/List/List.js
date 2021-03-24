@@ -5,14 +5,12 @@ import Title from './Title'
 import Item from './Item'
 const useStyle = makeStyles({
     list: {
-        width: '25%',
+        minWidth: '300px',
         backgroundColor: '#EBECF0',
         margin: '10px',
-        paddingBottom: '10px'
+        paddingBottom: '10px',
     },
 })
-
-
 
 const List = () => {
     const classes = useStyle();
