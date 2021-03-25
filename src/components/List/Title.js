@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyle = makeStyles({
   titleText: {
+    marginTop: '5px',
     fontSize: "1rem",
     fontWeight: "600",
     width: '96%',

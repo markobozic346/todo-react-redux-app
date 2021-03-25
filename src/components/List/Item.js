@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Paper, InputBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import EditIcon from "@material-ui/icons/Edit";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const useStyles = makeStyles({
   itemContainer: {
@@ -13,18 +14,25 @@ const useStyles = makeStyles({
     fontSize: "0.9rem",
     fontWeight: "400",
   },
+
+  input: {
+    fontSize: "0.9rem",
+    backgroundColor: "white",
+    width: "100%",
+    paddingLeft: "5px",
+  },
+  deleteIcon: {
+    "&:hover": {
+      color: "red",
+    },
+    float: "right",
+  },
   editIcon: {
     "&:hover": {
       color: "black",
     },
     float: "right",
   },
-  input: {
-    fontSize: '0.9rem',
-    backgroundColor: 'white',
-    width: '100%',
-    paddingLeft: '5px'
-  }
 });
 
 const Item = () => {
@@ -36,8 +44,8 @@ const Item = () => {
     <div className={classes.itemContainer}>
       {isClicked ? (
         <InputBase
-        className={classes.input}
-        value={itemValue}
+          className={classes.input}
+          value={itemValue}
           autoFocus={true}
           onBlur={() => {
             setIsClicked(!isClicked);
@@ -46,6 +54,7 @@ const Item = () => {
       ) : (
         <Paper className={classes.itemText}>
           something todo
+          <HighlightOffIcon color="action" className={classes.deleteIcon} />
           <EditIcon
             className={classes.editIcon}
             color="action"
