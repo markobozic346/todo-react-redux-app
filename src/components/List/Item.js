@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Item = () => {
+const Item = (itemText) => {
   const classes = useStyles();
 
   const [isClicked, setIsClicked] = useState(false);
@@ -53,7 +53,7 @@ const Item = () => {
         />
       ) : (
         <Paper className={classes.itemText}>
-          something todo
+          {itemText.itemText}
           <HighlightOffIcon color="action" className={classes.deleteIcon} />
           <EditIcon
             className={classes.editIcon}

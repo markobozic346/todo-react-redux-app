@@ -1,32 +1,43 @@
 import "./App.css";
 import List from "./components/List/List";
-
 import { makeStyles } from "@material-ui/styles";
-import InputContainer from './components/Input/InputContainer'
+import InputContainer from "./components/Input/InputContainer";
+
+import {useSelector} from 'react-redux';
+
+
 const useStyle = makeStyles({
   listCointainer: {
-   display: 'flex',
-   justifyContent: 'flex-start',
+    display: "flex",
+   
   },
-  App:{
-    minHeight: '100vh',
-    backgroundColor: 'lightgreen',
-    width: '100%',
-    overflowY: 'auto',
-  }
+  App: {
+    minHeight: "100vh",
+    backgroundColor: "lightgreen",
+    width: "100%",
+    overflowX: 'scroll'
+  },
 });
-function App() {
+
+
+function App(store) {
+
+  const data = useSelector(state => state.addReducer);
+  
   const classes = useStyle();
   return (
     <div className={classes.App}>
+      
       <div className={classes.listCointainer}>
-        <List key={1} />
-        <List key={2}/>
-        <List key={3}/>
-        <List key={4}/>
-        <List key={5}/>
-        <List key={6}/>
-        <InputContainer type="list"/>
+         {data.map((list, i) => (
+          
+          <List
+            key={i}
+            listTitle={list.title}
+            listItems={list.items}
+          />
+        ))}  
+        <InputContainer type="list" />
       </div>
     </div>
   );

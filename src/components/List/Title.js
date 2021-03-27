@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, InputBase, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
+
 const useStyle = makeStyles({
   titleText: {
     marginTop: '5px',
@@ -21,7 +22,7 @@ const useStyle = makeStyles({
  }
 });
 
-const Title = () => {
+const Title = ({listTitle}) => {
   const [isClicked, setIsClicked] = useState(false);
   const [title, setTitle] = useState("this is title");
 
@@ -34,7 +35,7 @@ const Title = () => {
           className={classes.titleText}
           onClick={() => setIsClicked(!isClicked)}
         >
-          {title}
+         {listTitle}
         </Typography>
       ) : (
         <InputBase

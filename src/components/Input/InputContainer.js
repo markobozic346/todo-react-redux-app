@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Paper } from "@material-ui/core";
 import Input from "./Input";
@@ -7,8 +7,8 @@ const useStyles = makeStyles({
   list: {
     minWidth: "300px",
     backgroundColor: "#EBECF0",
-    margin: "10px",
-    paddingBottom: "10px",
+    margin: '10px',
+    padding: "10px 0 10px 0",
     height: "fit-content",
   },
 });
@@ -18,10 +18,10 @@ const InputContainer = ({ type }) => {
   return type === "list" ? (
     <Paper elevation={3} className={classes.list}>
       {" "}
-      <Input type={type} />{" "}
+      <Input  type={type} />{" "}
     </Paper>
   ) : (
-    <Input type={type} />
+    <Input  type={type} />
   );
 };
 
