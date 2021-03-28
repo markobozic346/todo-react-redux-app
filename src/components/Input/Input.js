@@ -30,23 +30,23 @@ const useStyles = makeStyles({
   },
 });
 
-const Input = ({ type }) => {
-
-  const handleDispatch = (type, value) => {
-    
+const Input = ({ type, listID }) => {
+  const handleDispatch = (type, value, listID) => {
+    // adds new list
     if (type === "list") {
-      
       dispatch(actions.addList(value));
+
+      //adds new item in list
     } else {
-      //send item data
+      
+      dispatch(actions.addItem(value, listID));
     }
-  }
+  };
 
   //dispatch
   const dispatch = useDispatch();
   //states
   const [change, setChange] = useState("");
-  
   const [isClicked, setIsClicked] = useState(false);
   const classes = useStyles();
   return (
@@ -56,23 +56,26 @@ const Input = ({ type }) => {
           <InputBase
             value={change}
             onChange={(e) => {
-              
               setChange(e.target.value);
             }}
             autoFocus={true}
-           
             className={classes.input}
           />
           <Button
-            onClick={() => { 
-              handleDispatch(type, change);
-              
-             }}
+            onClick={() => {
+              handleDispatch(type, change, listID);
+            }}
             className={classes.confirmAddButton}
           >
             add new {type}
           </Button>
-          <HighlightOffIcon onClick={()=>{setIsClicked(!isClicked);}}className={classes.icon} color="action" />
+          <HighlightOffIcon
+            onClick={() => {
+              setIsClicked(!isClicked);
+            }}
+            className={classes.icon}
+            color="action"
+          />
         </>
       ) : (
         <Button

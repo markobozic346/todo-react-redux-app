@@ -3,16 +3,18 @@ const addList = (title) => {
     return{
         type: 'ADD_LIST',
         payload: {
-            title: title,
+            title,
         }
     }
 }
 
-const addItem = () => {
+const addItem = (description, id) => {
+    
     return{
         type: 'ADD_ITEM',
         payload: {
-            description: 'something'
+            description,
+            id
         }
     }
 }

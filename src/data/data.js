@@ -45,42 +45,7 @@ const data = [
                 itemText: 'add material ui'
             },
         ]
-    },
-    {
-        id: 4,
-        title: 'done',
-        items: [
-            {
-                itemID: 1,
-                itemText: 'add components'
-            },
-            {
-                itemID: 2,
-                itemText: 'add material ui'
-            },
-        ]
-    },
-    {
-        id: 5,
-        title: 'done',
-        items: [
-        ]
-    },
-    {
-        id: 6,
-        title: 'done',
-        items: [
-            {
-                itemID: 1,
-                itemText: 'add components'
-            },
-            {
-                itemID: 2,
-                itemText: 'add material ui'
-            },
-        ]
     }
-    
 ]
 
 export default data;

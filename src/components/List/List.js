@@ -3,7 +3,7 @@ import { Paper} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles'
 import Title from './Title'
 import Item from './Item'
-import AddItem from '../Input/InputContainer'
+import InputContainer from '../Input/InputContainer'
 const useStyle = makeStyles({
     list: {
         minWidth: '300px',
@@ -15,7 +15,7 @@ const useStyle = makeStyles({
     },
 })
 
-const List = ({listTitle, listItems}) => {
+const List = ({listID, listTitle, listItems}) => {
     const classes = useStyle();
     return (
         
@@ -23,11 +23,11 @@ const List = ({listTitle, listItems}) => {
             
               <Title listTitle={listTitle}/>
               
-              {listItems && listItems.map((item)=>(
-                <Item key={item.itemID} itemText={item.itemText}/> 
+              {listItems && listItems.map((item, i)=>(
+                <Item key={i} itemText={item.itemText} /> 
               ))} 
             
-            <AddItem type='item'/> 
+            <InputContainer type='item' listID={listID}/> 
         </Paper>
             
       

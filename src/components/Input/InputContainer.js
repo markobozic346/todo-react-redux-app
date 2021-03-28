@@ -13,15 +13,14 @@ const useStyles = makeStyles({
   },
 });
 
-const InputContainer = ({ type }) => {
+const InputContainer = ({listID, type }) => {
   const classes = useStyles();
   return type === "list" ? (
     <Paper elevation={3} className={classes.list}>
-      {" "}
-      <Input  type={type} />{" "}
+      <Input  type={type} listID={listID}/>
     </Paper>
   ) : (
-    <Input  type={type} />
+    <Input  type={type} listID={listID}/>
   );
 };
 

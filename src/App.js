@@ -33,6 +33,7 @@ function App(store) {
           
           <List
             key={i}
+            listID={list.id}
             listTitle={list.title}
             listItems={list.items}
           />
