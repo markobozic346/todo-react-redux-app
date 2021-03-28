@@ -22,7 +22,7 @@ const useStyle = makeStyles({
 
 function App(store) {
 
-  const data = useSelector(state => state.addReducer);
+  const data = useSelector(state => state);
   
   const classes = useStyle();
   return (
