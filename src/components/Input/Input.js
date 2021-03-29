@@ -46,7 +46,10 @@ const Input = ({ type, listID }) => {
     }
   };
 
-  
+  const resetInputField = () => {
+    setChange('');
+    setIsClicked(!isClicked);
+  }
   //states
   const [change, setChange] = useState("");
   const [isClicked, setIsClicked] = useState(false);
@@ -65,7 +68,9 @@ const Input = ({ type, listID }) => {
           />
           <Button
             onClick={() => {
-              handleDispatch(type, change, listID);
+              handleDispatch(type, change, listID)
+              resetInputField()
+              
             }}
             className={classes.confirmAddButton}
           >
@@ -74,6 +79,7 @@ const Input = ({ type, listID }) => {
           <HighlightOffIcon
             onClick={() => {
               setIsClicked(!isClicked);
+              resetInputField();
             }}
             className={classes.icon}
             color="action"
