@@ -16,16 +16,14 @@ const useStyle = makeStyles({
 })
 
 const List = ({listID, listTitle, listItems}) => {
+    
     const classes = useStyle();
     return (
         
         <Paper elevation={3} className={classes.list}>
             
               <Title listTitle={listTitle}/>
-              
-              {listItems && listItems.map((item, i)=>(
-                <Item key={i} itemText={item.itemText} /> 
-              ))} 
+              {listItems && listItems.map((item ,i) => <Item key={i} itemData={item}  listID={listID}/>)}
             
             <InputContainer type='item' listID={listID}/> 
         </Paper>

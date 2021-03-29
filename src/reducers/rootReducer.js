@@ -1,12 +1,18 @@
 import data from "../data/data";
 
+// inital counters
+const counters = {
+  list: 3,
+  items: 7,
+};
+
 const rootReducer = (state = data, action) => {
   switch (action.type) {
     case "ADD_LIST":
       return [
         ...state,
         {
-          id: 9,
+          id: counters.list + 1,
           title: action.payload.title,
           items: [],
         },
@@ -19,14 +25,24 @@ const rootReducer = (state = data, action) => {
               items: [
                 ...list.items,
                 {
-                  itemID: 89,
+                  itemID: counters.items + 1,
                   itemText: action.payload.description,
                 },
               ],
             }
           : list
       );
-
+    case "REMOVE_ITEM":
+      return state.map((list) =>
+        list.id === action.payload.listID
+          ? {
+              ...list,
+              items: list.items.filter(
+                (item) => item.itemID !== action.payload.itemID
+              ),
+            }
+          : list
+      );
     default:
       return state;
   }

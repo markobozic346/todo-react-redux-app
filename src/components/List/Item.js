@@ -3,6 +3,8 @@ import { Paper, InputBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import EditIcon from "@material-ui/icons/Edit";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { useDispatch } from "react-redux";
+import actions from "../../actions/actions";
 
 const useStyles = makeStyles({
   itemContainer: {
@@ -35,9 +37,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Item = (itemText) => {
+const Item = ({itemData, listID} ) => {
+  console.log(listID)
+  //dispatch
+  const dispatch = useDispatch();
+  
   const classes = useStyles();
 
+  const deleteItem = (itemID, listID) =>{
+    dispatch(actions.removeItem(itemID, listID));
+  };
+
+
+  //states
   const [isClicked, setIsClicked] = useState(false);
   const [itemValue, setItemValue] = useState("finish this project u dumb");
   return (
@@ -53,8 +65,8 @@ const Item = (itemText) => {
         />
       ) : (
         <Paper className={classes.itemText}>
-          {itemText.itemText}
-          <HighlightOffIcon color="action" className={classes.deleteIcon} />
+          {itemData.itemText}
+          <HighlightOffIcon color="action" className={classes.deleteIcon} onClick={()=> {deleteItem(itemData.itemID, listID)}}/>
           <EditIcon
             className={classes.editIcon}
             color="action"

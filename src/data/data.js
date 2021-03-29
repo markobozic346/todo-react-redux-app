@@ -23,11 +23,11 @@ const data = [
         title: 'doing now',
         items: [
             {
-                itemID: 1,
+                itemID: 4,
                 itemText: 'add redux'
             },
             {
-                itemID: 2,
+                itemID: 5,
                 itemText: 'fixing bugs'
             },
         ]
@@ -37,11 +37,11 @@ const data = [
         title: 'done',
         items: [
             {
-                itemID: 1,
+                itemID: 6,
                 itemText: 'add components'
             },
             {
-                itemID: 2,
+                itemID: 7,
                 itemText: 'add material ui'
             },
         ]

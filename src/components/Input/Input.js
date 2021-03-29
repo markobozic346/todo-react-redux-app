@@ -31,6 +31,10 @@ const useStyles = makeStyles({
 });
 
 const Input = ({ type, listID }) => {
+  
+  //dispatch
+  const dispatch = useDispatch();
+  
   const handleDispatch = (type, value, listID) => {
     // adds new list
     if (type === "list") {
@@ -38,13 +42,11 @@ const Input = ({ type, listID }) => {
 
       //adds new item in list
     } else {
-      
       dispatch(actions.addItem(value, listID));
     }
   };
 
-  //dispatch
-  const dispatch = useDispatch();
+  
   //states
   const [change, setChange] = useState("");
   const [isClicked, setIsClicked] = useState(false);
