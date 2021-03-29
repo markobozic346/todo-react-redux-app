@@ -47,18 +47,27 @@ const Item = ({itemData, listID} ) => {
     dispatch(actions.removeItem(itemID, listID));
   };
 
+  const updateItem = (listID, itemID, description) => {
+    dispatch(actions.updateItem(listID, itemID, description))
+  }
 
   //states
   const [isClicked, setIsClicked] = useState(false);
-  const [itemValue, setItemValue] = useState("finish this project u dumb");
+  const [description, setDescription] = useState("");
   return (
     <div className={classes.itemContainer}>
       {isClicked ? (
         <InputBase
           className={classes.input}
-          value={itemValue}
+          value={description}
           autoFocus={true}
+          onChange ={(e) => {
+            setDescription(e.target.value)
+          }
+          }
           onBlur={() => {
+            
+            updateItem(listID, itemData.itemID, description);
             setIsClicked(!isClicked);
           }}
         />

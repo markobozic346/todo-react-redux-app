@@ -35,7 +35,7 @@ const Input = ({ type, listID }) => {
   //dispatch
   const dispatch = useDispatch();
   
-  const handleDispatch = (type, value, listID) => {
+  const handleAddDispatch = (type, value, listID) => {
     // adds new list
     if (type === "list") {
       dispatch(actions.addList(value));
@@ -45,7 +45,7 @@ const Input = ({ type, listID }) => {
       dispatch(actions.addItem(value, listID));
     }
   };
-
+  
   const resetInputField = () => {
     setChange('');
     setIsClicked(!isClicked);
@@ -68,7 +68,7 @@ const Input = ({ type, listID }) => {
           />
           <Button
             onClick={() => {
-              handleDispatch(type, change, listID)
+              handleAddDispatch(type, change, listID)
               resetInputField()
               
             }}

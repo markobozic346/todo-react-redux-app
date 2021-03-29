@@ -41,16 +41,32 @@ const rootReducer = (state = data, action) => {
             }
           : list
       );
-      case "REMOVE_LIST":
-        return state.filter(list => list.id !== action.payload.listID)
-      
-        case "UPDATE_TITLE":
-          return state.map(list => list.id === action.payload.listID ? {
-            ...list,
-            title: action.payload.title
-          }: list )
-    
-        default:
+    case "REMOVE_LIST":
+      return state.filter((list) => list.id !== action.payload.listID);
+
+    case "UPDATE_TITLE":
+      return state.map((list) =>
+        list.id === action.payload.listID
+          ? {
+              ...list,
+              title: action.payload.title,
+            }
+          : list
+      );
+    case "UPDATE_ITEM":
+      return state.map((list) =>
+        list.id === action.payload.listID
+          ? {
+              ...list,
+              items: list.items.map((item) =>
+                item.itemID === action.payload.itemID
+                  ? { ...item, itemText: action.payload.description }
+                  : item
+              ),
+            }
+          : list
+      );
+    default:
       return state;
   }
 };
