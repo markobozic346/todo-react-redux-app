@@ -1,18 +1,16 @@
 import data from "../data/data";
 
 // inital counters
-const counters = {
-  list: 3,
-  items: 7,
-};
 
+let lastListID = 3;
+let lastItemID = 7;
 const rootReducer = (state = data, action) => {
   switch (action.type) {
     case "ADD_LIST":
       return [
         ...state,
         {
-          id: counters.list + 1,
+          id: ++lastListID,
           title: action.payload.title,
           items: [],
         },
@@ -25,7 +23,7 @@ const rootReducer = (state = data, action) => {
               items: [
                 ...list.items,
                 {
-                  itemID: counters.items + 1,
+                  itemID: ++lastItemID,
                   itemText: action.payload.description,
                 },
               ],
