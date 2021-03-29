@@ -43,6 +43,8 @@ const rootReducer = (state = data, action) => {
             }
           : list
       );
+      case "REMOVE_LIST":
+        return state.filter(list => list.id !== action.payload.listID)
     default:
       return state;
   }

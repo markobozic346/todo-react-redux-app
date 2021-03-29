@@ -37,11 +37,11 @@ const updateItem = () => {
     }
 }
 
-const removeList = () => {
+const removeList = (listID) => {
     return{
         type: 'REMOVE_LIST',
         payload: {
-            id: 'something'
+            listID,
         }
     }
 }
@@ -58,4 +58,4 @@ const removeItem = (itemID, listID) => {
     }
 }
 
-export default {addList, addItem, removeItem}
+export default {addList, addItem, removeItem, removeList}

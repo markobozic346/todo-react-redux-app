@@ -22,7 +22,7 @@ const List = ({listID, listTitle, listItems}) => {
         
         <Paper elevation={3} className={classes.list}>
             
-              <Title listTitle={listTitle}/>
+              <Title listTitle={listTitle} listID={listID}/>
               {listItems && listItems.map((item ,i) => <Item key={i} itemData={item}  listID={listID}/>)}
             
             <InputContainer type='item' listID={listID}/> 
