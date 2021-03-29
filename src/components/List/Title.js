@@ -33,13 +33,16 @@ const useStyle = makeStyles({
 
 const Title = ({listTitle, listID}) => {
   const dispatch = useDispatch();
-  
-  const removeList = () => {
+
+  const removeList = (listID) => {
     dispatch(actions.removeList(listID))
   }
 
+  const updateTitle = (listID, title) => {
+    dispatch(actions.updateTitle(listID, title))
+  }
   const [isClicked, setIsClicked] = useState(false);
-  const [title, setTitle] = useState("this is title");
+  const [title, setTitle] = useState("");
 
   const classes = useStyle();
   return (
@@ -58,9 +61,15 @@ const Title = ({listTitle, listID}) => {
           className={classes.input}
           value={title}
           autoFocus={true}
+          onChange={(e)=> setTitle(e.target.value)
+
+          }
           onBlur={() =>
-            //update title value later here
-            setIsClicked(!isClicked)
+            {
+            
+            updateTitle(listID, title)
+            setIsClicked(!isClicked);
+            }
           }
         ></InputBase>
       )}

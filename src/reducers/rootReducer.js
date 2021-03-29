@@ -43,7 +43,14 @@ const rootReducer = (state = data, action) => {
       );
       case "REMOVE_LIST":
         return state.filter(list => list.id !== action.payload.listID)
-    default:
+      
+        case "UPDATE_TITLE":
+          return state.map(list => list.id === action.payload.listID ? {
+            ...list,
+            title: action.payload.title
+          }: list )
+    
+        default:
       return state;
   }
 };

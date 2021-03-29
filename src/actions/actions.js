@@ -19,20 +19,23 @@ const addItem = (description, id) => {
     }
 }
 
-const updateTitle = () => {
+const updateTitle = (listID, title) => {
     return{
         type: 'UPDATE_TITLE',
         payload: {
-            id: 'something'
+            listID,
+            title
         }
     }
 }
 
-const updateItem = () => {
+const updateItem = (listID, itemID, description) => {
     return{
         type: 'UPDATE_ITEM',
         payload: {
-            id: 'something'
+            listID,
+            itemID,
+            description
         }
     }
 }
@@ -58,4 +61,4 @@ const removeItem = (itemID, listID) => {
     }
 }
 
-export default {addList, addItem, removeItem, removeList}
+export default {addList, addItem, removeItem, removeList, updateTitle, updateItem}

@@ -38,7 +38,6 @@ const useStyles = makeStyles({
 });
 
 const Item = ({itemData, listID} ) => {
-  console.log(listID)
   //dispatch
   const dispatch = useDispatch();
   
