@@ -2,7 +2,7 @@ import "./App.css";
 import List from "./components/List/List";
 import { makeStyles } from "@material-ui/styles";
 import InputContainer from "./components/Input/InputContainer";
-
+import { DragDropContext } from 'react-beautiful-dnd'
 import {useSelector} from 'react-redux';
 
 
@@ -26,6 +26,7 @@ function App(store) {
   
   const classes = useStyle();
   return (
+    <DragDropContext>
     <div className={classes.App}>
       
       <div className={classes.listCointainer}>
@@ -41,6 +42,7 @@ function App(store) {
         <InputContainer type="list" />
       </div>
     </div>
+    </DragDropContext>
   );
 }
 

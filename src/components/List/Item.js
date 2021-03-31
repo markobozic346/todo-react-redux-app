@@ -5,7 +5,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { useDispatch } from "react-redux";
 import actions from "../../actions/actions";
-
+import { Draggable } from "react-beautiful-dnd";
 const useStyles = makeStyles({
   itemContainer: {
     margin: "5px",
@@ -37,19 +37,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Item = ({itemData, listID} ) => {
+const Item = ({ itemData, listID, index }) => {
   //dispatch
   const dispatch = useDispatch();
-  
+
   const classes = useStyles();
 
-  const deleteItem = (itemID, listID) =>{
+  const deleteItem = (itemID, listID) => {
     dispatch(actions.removeItem(itemID, listID));
   };
 
   const updateItem = (listID, itemID, description) => {
-    dispatch(actions.updateItem(listID, itemID, description))
-  }
+    dispatch(actions.updateItem(listID, itemID, description));
+  };
 
   //states
   const [isClicked, setIsClicked] = useState(false);
@@ -57,32 +57,44 @@ const Item = ({itemData, listID} ) => {
   return (
     <div className={classes.itemContainer}>
       {isClicked ? (
+        // Item edit input
         <InputBase
           className={classes.input}
           value={description}
           autoFocus={true}
-          onChange ={(e) => {
-            setDescription(e.target.value)
-          }
-          }
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
           onBlur={() => {
-            
             updateItem(listID, itemData.itemID, description);
             setIsClicked(!isClicked);
           }}
         />
       ) : (
-        <Paper className={classes.itemText}>
-          {itemData.itemText}
-          <HighlightOffIcon color="action" className={classes.deleteIcon} onClick={()=> {deleteItem(itemData.itemID, listID)}}/>
-          <EditIcon
-            className={classes.editIcon}
-            color="action"
-            onClick={() => {
-              setIsClicked(!isClicked);
-            }}
-          />
-        </Paper>
+        // item description
+        <Draggable draggableId={itemData.itemID} index={index}>
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}> 
+              <Paper className={classes.itemText}>
+                {itemData.itemText}
+                <HighlightOffIcon
+                  color="action"
+                  className={classes.deleteIcon}
+                  onClick={() => {
+                    deleteItem(itemData.itemID, listID);
+                  }}
+                />
+                <EditIcon
+                  className={classes.editIcon}
+                  color="action"
+                  onClick={() => {
+                    setIsClicked(!isClicked);
+                  }}
+                />
+              </Paper>
+            </div>
+          )}
+        </Draggable>
       )}
     </div>
   );

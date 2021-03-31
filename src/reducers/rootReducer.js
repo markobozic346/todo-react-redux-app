@@ -10,7 +10,7 @@ const rootReducer = (state = data, action) => {
       return [
         ...state,
         {
-          id: ++lastListID,
+          id: `list-${++lastListID}`,
           title: action.payload.title,
           items: [],
         },
@@ -23,7 +23,7 @@ const rootReducer = (state = data, action) => {
               items: [
                 ...list.items,
                 {
-                  itemID: ++lastItemID,
+                  itemID: `item-${++lastItemID}`,
                   itemText: action.payload.description,
                 },
               ],

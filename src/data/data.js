@@ -1,47 +1,47 @@
 const data = [
     {
-        id: 1,
+        id: 'list-1',
         title: 'todo',
         items: [
             {
-                itemID: 1,
+                itemID: 'item-1',
                 itemText: 'finish this project'
             },
             {
-                itemID: 2,
+                itemID: 'item-2',
                 itemText: 'take trash out'
             },
             {
-                itemID: 3,
+                itemID: 'item-3',
                 itemText: 'sleep'
             },
 
         ]
     },
     {
-        id: 2,
+        id: 'list-2',
         title: 'doing now',
         items: [
             {
-                itemID: 4,
+                itemID: 'item-4',
                 itemText: 'add redux'
             },
             {
-                itemID: 5,
+                itemID: 'item-5',
                 itemText: 'fixing bugs'
             },
         ]
     },
     {
-        id: 3,
+        id: 'list-3',
         title: 'done',
         items: [
             {
-                itemID: 6,
+                itemID: 'item-6',
                 itemText: 'add components'
             },
             {
-                itemID: 7,
+                itemID: 'item-7',
                 itemText: 'add material ui'
             },
         ]
