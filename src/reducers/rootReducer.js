@@ -66,6 +66,7 @@ const rootReducer = (state = data, action) => {
             }
           : list
       );
+     
     default:
       return state;
   }

@@ -71,7 +71,7 @@ const Item = ({ itemData, listID, index }) => {
           }}
         />
       ) : (
-        // item description
+        //item value
         <Draggable draggableId={itemData.itemID} index={index}>
           {(provided) => (
             <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}> 

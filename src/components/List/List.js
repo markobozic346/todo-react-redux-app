@@ -15,10 +15,13 @@ const useStyle = makeStyles({
         paddingBottom: '10px',
         height: 'fit-content',
     },
+    droppable: {
+        paddingTop: '10px'
+    }
 })
 
 const List = ({listID, listTitle, listItems}) => {
-    
+    let listCounter = 0;
     const classes = useStyle();
     return (
         
@@ -26,9 +29,9 @@ const List = ({listID, listTitle, listItems}) => {
             
               <Title listTitle={listTitle} listID={listID}/>
             
-              <Droppable droppableId={listID}>
-                {(provided)=> (<div ref={provided.innerRef} {...provided.droppableProps}>
-                    {listItems && listItems.map((item ,i) => <Item key={i} itemData={item}  listID={listID} index={i}/>)}
+              <Droppable droppableId={listID} >
+                {(provided)=> (<div  className={classes.droppable} ref={provided.innerRef} {...provided.droppableProps}>
+                    {listItems.map((item ,i) => <Item key={listCounter++} itemData={item}  listID={listID} index={i}/>)}
                     {provided.placeholder}
                 </div>)}
               </Droppable>
