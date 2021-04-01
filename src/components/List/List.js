@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Title from "./Title";
 import Item from "./Item";
 import InputContainer from "../Input/InputContainer";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const useStyle = makeStyles({
   list: {
@@ -20,34 +20,41 @@ const useStyle = makeStyles({
   },
 });
 
-const List = ({ listID, listTitle, listItems }) => {
+const List = ({ listID, listTitle, listItems, index}) => {
   let listCounter = 0;
   const classes = useStyle();
   return (
-    <Paper elevation={3} className={classes.list}>
-      <Title listTitle={listTitle} listID={listID} />
-
-      <Droppable droppableId={listID}>
-        {(provided) => (
-          <div
-            className={classes.droppable}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {listItems.map((item, i) => (
-              <Item
-                key={listCounter++}
-                itemData={item}
-                listID={listID}
-                index={i}
-              />
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-      <InputContainer type="item" listID={listID} />
-    </Paper>
+      <Draggable draggableId={listID} index={index} >
+          {(provided)=>(
+              <div {...provided.draggableProps} ref={provided.innerRef}>
+              <Paper elevation={3} className={classes.list} {...provided.dragHandleProps}>
+              <Title listTitle={listTitle} listID={listID} />
+        
+              <Droppable droppableId={listID}>
+                {(provided) => (
+                  <div
+                    className={classes.droppable}
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    {listItems.map((item, i) => (
+                      <Item
+                        key={listCounter++}
+                        itemData={item}
+                        listID={listID}
+                        index={i}
+                      />
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+              <InputContainer type="item" listID={listID} />
+            </Paper>
+            </div>
+          )}
+    
+    </Draggable>
   );
 };
 
