@@ -74,7 +74,11 @@ const Item = ({ itemData, listID, index }) => {
         //item value
         <Draggable draggableId={itemData.itemID} index={index}>
           {(provided) => (
-            <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}> 
+            <div
+              ref={provided.innerRef}
+              {...provided.dragHandleProps}
+              {...provided.draggableProps}
+            >
               <Paper className={classes.itemText}>
                 {itemData.itemText}
                 <HighlightOffIcon
