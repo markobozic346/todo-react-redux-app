@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
   button: {
+    position: 'relative',
+    top: '30px',
     width: "100%",
   },
   input: {

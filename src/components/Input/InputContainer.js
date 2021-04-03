@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     margin: '10px',
     padding: "10px 0 10px 0",
     height: "fit-content",
+    paddingBottom: '30px'
   },
 });
 

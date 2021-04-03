@@ -12,7 +12,7 @@ const useStyle = makeStyles({
     width: "300px",
     backgroundColor: "#EBECF0",
     margin: "10px",
-    paddingBottom: "10px",
+    paddingBottom: "40px",
     height: "fit-content",
   },
   droppable: {

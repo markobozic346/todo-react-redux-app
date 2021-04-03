@@ -22,14 +22,7 @@ function App() {
   let listCounter = 0;
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
-    console.log(
-      "destination:",
-      destination,
-      "source:",
-      source,
-      "draggId:",
-      draggableId
-    );
+    
     // if dragged outside list exist function
     if (!destination) {
       return;
@@ -42,22 +35,17 @@ function App() {
       newListOrder.splice(destination.index, 0, draggingList[0]);
       return;
     }
+    // list from where is dragging
     const sourceList = data.filter((list) => list.id === source.droppableId);
+    // list where is dropped
     const destinationList = data.filter(
       (list) => list.id === destination.droppableId
     );
+    // item which is dragged
     const draggingItem = sourceList[0].items.filter(
       (item) => item.itemID === draggableId
     );
 
-    console.log(
-      "source",
-      sourceList,
-      "destinationList:",
-      destinationList,
-      "draggging:",
-      draggingItem
-    );
     // if dragged in same list
     if (source.droppableId === destination.droppableId) {
       sourceList[0].items.splice(source.index, 1);
@@ -68,7 +56,7 @@ function App() {
       destinationList[0].items.splice(destination.index, 0, draggingItem[0]);
     }
   };
-
+ 
   const classes = useStyle();
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
