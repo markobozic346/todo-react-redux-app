@@ -66,7 +66,8 @@ const rootReducer = (state = data, action) => {
             }
           : list
       );
-     
+     case "UPDATE_ON_DRAG_AND_DROP": 
+            return [...state]
     default:
       return state;
   }

@@ -5,6 +5,8 @@ import InputContainer from "./components/Input/InputContainer";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import { Droppable } from "react-beautiful-dnd";
+import {useDispatch} from "react-redux";
+import actions from './actions/actions'
 const useStyle = makeStyles({
   listCointainer: {
     display: "flex",
@@ -18,8 +20,18 @@ const useStyle = makeStyles({
 });
 
 function App() {
+  // get data from state
   const data = useSelector((state) => state);
+  // key for list components
   let listCounter = 0;
+
+  // initialize dispatch function
+  const dispatch = useDispatch();
+  
+  const updateState = () => {
+    dispatch(actions.updateOnDragAndDrop());
+  }
+
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
     
@@ -27,12 +39,14 @@ function App() {
     if (!destination) {
       return;
     }
+    // if type of dragged element is list
     if (type === "list") {
       const newListOrder = data;
       const draggingList = data.filter((list) => list.id === draggableId);
       console.log(draggingList);
       newListOrder.splice(source.index, 1);
       newListOrder.splice(destination.index, 0, draggingList[0]);
+      updateState();
       return;
     }
     // list from where is dragging
@@ -50,10 +64,12 @@ function App() {
     if (source.droppableId === destination.droppableId) {
       sourceList[0].items.splice(source.index, 1);
       destinationList[0].items.splice(destination.index, 0, draggingItem[0]);
+      updateState();
     } else {
       //if dragged in different list
       sourceList[0].items.splice(source.index, 1);
       destinationList[0].items.splice(destination.index, 0, draggingItem[0]);
+      updateState();
     }
   };
  
