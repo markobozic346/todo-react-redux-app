@@ -54,6 +54,7 @@ const Item = ({ itemData, listID, index }) => {
   //states
   const [isClicked, setIsClicked] = useState(false);
   const [description, setDescription] = useState("");
+
   return (
     <div className={classes.itemContainer}>
       {isClicked ? (
@@ -92,6 +93,7 @@ const Item = ({ itemData, listID, index }) => {
                   className={classes.editIcon}
                   color="action"
                   onClick={() => {
+                    setDescription(itemData.itemText);
                     setIsClicked(!isClicked);
                   }}
                 />
